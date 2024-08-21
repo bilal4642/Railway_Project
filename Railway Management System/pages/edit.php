@@ -5,13 +5,13 @@ isUserLoggedIn('ID');
 isUserAdmin('ROLEID');
 $db = new Database();
 $db->query("SELECT station.id, station.station_name FROM station;");
-// $db->execute();
+$db->execute();
 $stations = $db->fetchAll();
 
 $tripId = $_GET['id'];
 $db->query("SELECT * FROM trip where trip.id = :id");
 $db->bind(':id', $tripId);
-// $db->execute();
+$db->execute();
 $trip = $db->fetch();
 if (!$trip) {
     $_SESSION['tripNotMess'] = "Trip not found";
